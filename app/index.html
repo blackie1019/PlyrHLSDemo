@@ -9,24 +9,37 @@
 </head>
 
 <body>
-    <video preload="none" id="player" autoplay controls crossorigin></video>
+    <div class="ori-player"> 
+        <h1>Original HLS.JS Player</h1>
+        <video preload="none" id="hls-player" autoplay controls crossorigin></video>
+    </div>
+    <div class="ori-player"> 
+        <h1>Plyr.JS+HLS.JS Player</h1>
+        <video preload="none" id="plyr-player" autoplay controls crossorigin></video>
+    </div>
     <script src="js/plyr.js"></script>
     <script src="js/hls.js"></script>
     <video id="video"></video>
     <script>
         (function () {
-            var video = document.getElementById('player');
 
-            if (Hls.isSupported()) {
-                var hls = new Hls();
-                hls.loadSource('http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8');
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    video.play();
-                });
+            var hlsVideo = document.getElementById('hls-player');
+            var plyrVideo = document.getElementById('plyr-player');
+
+            constuctVideo(hlsVideo);
+            plyr.setup(constuctVideo(plyrVideo));
+
+            function constuctVideo(video){
+                if (Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource('http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8');
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                        video.play();
+                    });
+                }
+                return video;
             }
-
-            plyr.setup(video);
         })();
     </script>
 </body>
