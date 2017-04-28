@@ -1,0 +1,12 @@
+{
+  "name": "plyr-hls-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "blackie (http://blackie1019.github.io)",
+  "license": "ISC",
+  "dependencies": {
+    "hls.js": "^0.7.6",
+    "plyr": "^2.0.12"
+  }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="node_modules/plyr/dist/plyr.css" rel="stylesheet">
+</head>
+
+<body>
+    <video preload="none" id="player" autoplay controls crossorigin></video>
+    <script src="node_modules/plyr/dist/plyr.js"></script>
+    <script src="node_modules/hls.js/dist/hls.js"></script>
+    <video id="video"></video>
+    <script>
+        (function () {
+            var video = document.getElementById('player');
+
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource('http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8');
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            }
+
+            plyr.setup(video);
+        })();
+    </script>
+</body>
+
+</html>
