@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "author": "blackie (http://blackie1019.github.io)",
   "license": "ISC",
   "dependencies": {
     "hls.js": "^0.7.6",
+    "node-static": "^0.7.9",
     "plyr": "^2.0.12"
   }
 }
